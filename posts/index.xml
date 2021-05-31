@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>iOS - 分类 - 疯狂程序猿</title>
-        <link>https://zhangxistudy11.github.io/categories/ios/</link>
-        <description>iOS - 分类 - 疯狂程序猿</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate><atom:link href="https://zhangxistudy11.github.io/categories/ios/" rel="self" type="application/rss+xml" /><item>
+        <title>所有文章 - 疯狂程序猿</title>
+        <link>https://zhangxistudy11.github.io/posts/</link>
+        <description>所有文章 | 疯狂程序猿</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate><atom:link href="https://zhangxistudy11.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>关于 LoveIt</title>
     <link>https://zhangxistudy11.github.io/firstactile/</link>
     <pubDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</pubDate>
