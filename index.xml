@@ -6,6 +6,13 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</lastBuildDate>
             <atom:link href="https://zhangxistudy11.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>sourcetree</title>
+    <link>https://zhangxistudy11.github.io/sourcetree/</link>
+    <pubDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://zhangxistudy11.github.io/sourcetree/</guid>
+    <description><![CDATA[一、&ndash;no-ff 使用和不使用的区别 1、能够fast-foward情况下，即切出分支后，主分支没有任何改动: 使用 &ndash;no-ff ，会多出一根线，]]></description>
+</item><item>
     <title>关于 LoveIt</title>
     <link>https://zhangxistudy11.github.io/firstactile/</link>
     <pubDate>Fri, 02 Aug 2019 11:04:49 &#43;0800</pubDate>
