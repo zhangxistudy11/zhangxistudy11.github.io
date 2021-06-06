@@ -1,34 +1,38 @@
-# sourcetree
+# 使用SourceTree回滚
+
+
+  >代码回滚，适用于的场景：
+   >#### 1.提交错代码，想放弃刚刚提交的部分；
+   >#### 2.代码发生冲突，处理比较麻烦，为了代码安全，直接回滚到之前干净的代码。
+  
+  ### 我个人理解，可以分为本地回滚和远程回滚：
+  ### 一.本地回滚，回滚自己已经提交的代码，但还未推送到远程仓库。
+  ![WeChat7b227a7badf8de1ee1f36dd0fd1f9040.png](https://i.loli.net/2021/06/06/DVg62muXKwMCjIv.png)
+
+   目前我在本地提交了两次，但第二次有大量错误代码，我选择放弃，想直接回到第一次提交的位置，采取以下步骤：
+   选中你想回滚到的提交记录，右击->将（所在分支）重置到这次提交->强行合并->确定
+   
+   
+   ![屏幕快照 2019-03-02 下午6.59.15.png](https://i.loli.net/2021/06/06/U7jYOH2pctzaIgX.png)
+![屏幕快照 2019-03-02 下午6.59.29.png](https://i.loli.net/2021/06/06/9vLZkdUo35qh2Jz.png)
+
+### 二.远程回滚，即回滚远程代码仓库的代码。
+SourceTree默认是不提供这种操作的，因为存在风险。所以，回滚远程代码，一定要注意：
+>1.想要放弃的代码，是所有开发成员都一致同意的；
+>
+>2.想要放弃的代码只是自己的，中间没有别人的提交记录，这可以直接回滚。
+>
+>3.这个操作过程中，提醒其他成员不要推送代码。
+>
+  操作步骤如下：
+  1.SourceTree开启允许强制推送权限
+  ![WeChat49ce02c556383746dfcc3eab7c6e4b47.png](https://i.loli.net/2021/06/06/Do1FNxc2H5ZUkib.png)
+  2.和本地回滚一样，先回滚到想要的位置
+![屏幕快照 2019-03-02 下午6.59.15.png](https://i.loli.net/2021/06/06/U7jYOH2pctzaIgX.png)
+
+3.强制推送代码，切记这个时候不要拉取代码
+![屏幕快照 2019-03-02 下午7.51.34.png](https://i.loli.net/2021/06/06/xEpKXcMbykY5mtQ.png)
+5.完成操作，本地和远程的代码都是你想要回滚的地方。
 
 
 
-一、--no-ff 使用和不使用的区别
-
-1、能够fast-foward情况下，即切出分支后，主分支没有任何改动:
-
-使用 --no-ff ，会多出一根线，显示切出分支的改动；不使用的话，直接合并过来，看不出切出分支的改动；
-
-这个时候 --no-ff 使用会有效果
-
-使用：
-
-![截屏2021-01-31 20.28.20.png](https://upload-images.jianshu.io/upload_images/1076103-4681f11a7d90e9c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-不使用：
-![截屏2021-01-31 20.28.30.png](https://upload-images.jianshu.io/upload_images/1076103-ae1356633fdf3416.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-2、不能fast-foward情况下，即切出分支后，主分支也有改动：
-
-使用不适用--no-ff ，效果都是一样的，都展示如图
-
-![截屏2021-01-31 20.28.39.png](https://upload-images.jianshu.io/upload_images/1076103-ca03dee31c1d0556.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-二、切出使用了reabse后，合并的时候，都是可以fast-forward的，这个时候，最好是配合--no-ff使用
-
-展示如图：
-
-![截屏2021-01-31 20.28.54.png](https://upload-images.jianshu.io/upload_images/1076103-f9e082562e274b11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-三、[参考链接](https://backlog.com/git-tutorial/cn/stepup/stepup1_4.html)
