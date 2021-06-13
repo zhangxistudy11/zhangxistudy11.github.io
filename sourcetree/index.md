@@ -3,7 +3,6 @@
 
 
 
-![fasdag](https://i.loli.net/2021/06/06/f3bxnyiAQP2kszU.png)
 
 
   >代码回滚，适用于的场景：
