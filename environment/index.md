@@ -2,755 +2,186 @@
 
 
 
-这篇文章提供了可以在 Hugo 的文章中使用的基本 Markdown 语法示例.
+这篇文章主要介绍工作中常用到的环境变量，让大家能有一个清晰彻底的认识。
 
 <!--more-->
 
 {{< admonition >}}
-这篇文章借鉴了一篇很棒的[来自 Grav 的文章](http://learn.getgrav.org/content/markdown).
-
-如果你想了解 **Loveit** 主题的扩展 Markdown 语法, 请阅读[扩展 Markdown 语法页面](../theme-documentation-content#extended-markdown-syntax).
+文章内容主要是我个人的观点，如有疑问，欢迎评论区留言。
 {{< /admonition >}}
 
-事实上, 编写 Web 内容很麻烦. [WYSIWYG]^(所见即所得) 编辑器帮助减轻了这一任务. 但通常会导致代码太糟, 或更糟糕的是, 网页也会很丑.
+## 1、环境变量是什么
 
-没有通常伴随的所有复杂和丑陋的问题, **Markdown** 是一种更好的生成 **HTML** 内容的方式.
+环境变量是在操作系统中一个具有特定名字的对象，它包含了**一个或者多个应用程序所将使用到的信息**。
 
-一些主要好处是:
+变量：可以随意给其赋值的一个存储单元
 
-1. Markdown 简单易学, 几乎没有多余的字符, 因此编写内容也更快.
-2. 用 Markdown 书写时出错的机会更少.
-3. 可以产生有效的 XHTML 输出.
-4. 将内容和视觉显示保持分开, 这样就不会打乱网站的外观.
-5. 可以在你喜欢的任何文本编辑器或 Markdown 应用程序中编写内容.
-6. Markdown 使用起来很有趣!
+环境变量，可以理解为操作系统里设置的一些全局变量，这些全局变量是为了方便操作系统的运行、调度。
 
-John Gruber, Markdown 的作者如是说:
+## 2、为什么要设置环境变量
 
-> Markdown 格式的首要设计目标是更具可读性.
-> 最初的想法是 Markdown 格式的文档应当以纯文本形式发布,
-> 而不会看起来像被标签或格式说明所标记.
-> 虽然 Markdown 的语法受到几种现有的文本到 HTML 转换工具的影响,
-> 但 Markdown 语法的最大灵感来源是纯文本电子邮件的格式.
+**举个常见的例子**：windows系统下，假如我们安装了某一款软件，安装结束后，在安装目录会生成一个该软件的.exe文件，双击该文件，我们就能启动软件。但是难道我们每次要运行该软件的时候都要先找到该.exe文件所在的路径，然后双击吗，显然是不可能的，因为安装的软件太多，我们根本不可能记住所有已安装软件的路径，同时如果我们在其他路径下想运行某些软件岂不是完蛋了。
+
+这时候就需要环境变量了。
+
+
+## 3、环境变量的作用
+
+通过在环境变量里面加入所有软件的安装路径，当我们想运行某一软件时双击其快捷方式或者在DOS界面输入软件名称，此时，计算机除了在其当前目录下寻找该软件的.exe文件外，还在环境变量中搜索软件的路径，找到，运行。
+
+比如，Path是一个常见的环境变量，它告诉操作系统，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下寻找此程序外，还应到哪些目录下寻找。
+
+用户通过设置环境变量，来更好的运行进程。
+
+## 4、环境变量的分类
+
+一、按照生命周期来分，Linux环境变量可以分为两类：
+
+1. 永久的：需要用户修改相关的配置文件，变量永久生效。
+
+2. 临时的：用户利用export命令，在当前终端下声明环境变量，关闭Shell终端失效。
+
+二、按照作用域来分，Linux环境变量可以分为：
+
+1. 系统环境变量：系统环境变量对该系统中所有用户都有效。
+
+2. 用户环境变量：顾名思义，这种类型的环境变量只对特定的用户有效。
+
+## 5、不同文件的作用
+
+1. **/etc/profile：** 为系统的每个用户设置环境信息和启动程序，当用户第一次登录时，该文件被执行，其配置对所有登录的用户都有效。当被修改时，必须重启才会生效。
+
+2. **/etc/environment：** 系统的环境变量，/etc/profile是所有用户的环境变量，前者与登录用户无关，后者与登录用户有关，当同一变量在两个文件里有冲突时，以用户环境为准。
+
+3. **/etc/bashrc：** 为每个运行 bash shell 的用户执行该文件，当 bash shell 打开时，该文件被执行，其配置对所有使用bash的用户打开的每个bash都有效。当被修改后，不用重启只需要打开一个新的 bash 即可生效。
+
+4. **~/.bash_profile：** 为当前用户设置专属的环境信息和启动程序，当用户登录时该文件执行一次。默认情况下，它用于设置环境变量，并执行当前用户的 .bashrc 文件。理念类似于 /etc/profile，只不过只对当前用户有效，也需要重启才能生效。
+
+5. **~/.bashrc：** 为当前用户设置专属的 bash 信息，当每次打开新的shell时，该文件被执行。理念类似于/etc/bashrc，只不过只对当前用户有效，不需要重启只需要打开新的shell即可生效。
+
+6. **~/.bash_logout：** 为当前用户，每次退出bash shell时执行该文件，可以把一些清理工作的命令放进这个文件。
+
+
+{{< admonition >}}
+
+1. 以上需要重启才能生效的文件，其实可以通过source xxx **暂时生效**。
+
+2. 文件的执行顺序为：当登录Linux时，首先启动/etc/environment和/etc/profile，然后启动当前用户目录下的~/.bash_profile，执行此文件时一般会调用~/.bashrc文件，而执行~/.bashrc时一般会调用/etc/bashrc，最后退出shell时，执行~/.bash_logout。简单来说顺序为：
+
+
+{{< /admonition >}}
+
+>（登录时）/etc/environment –> /etc/profile(以及/etc/profile.d/里的文件) –> ~/.bash_profile –> （打开shell时）~/.bashrc –> /etc/bashrc –> （退出shell时）~/.bash_logout
+
+## 6、终端的作用
+
+终端的工作：用户通过终端输入命令，终端将命令传入计算机，执行后，并把结果输入到终端上显示。
+
+但是现在计算机硬件一体化程度越来越高，硬件质量也越来越强，输入输出设备完全没必要单独用一个硬件和计算机进行交换信息了，取而代之使用软件终端和计算机进行交互信息。
+
+这就是终端模拟器 (Terminal Emulator)，也就是我们现在所讨论的终端。除了它不是硬件，它符合终端的概念和工作流程。
+
+
+>举个例子，下面这些软件都是终端：
 >
-> {{< style "text-align: right;" >}}-- _John Gruber_{{< /style >}}
+>GNU/Linux：gnome-terminal、Konsole；
+>
+>macOS：Terminal.app、iTerm2；
+>
+>Windows：Win32 控制台、ConEmu 等。
 
-话不多说, 我们来回顾一下 Markdown 的主要语法以及生成的 HTML 样式!
 
-{{< admonition tip >}}
-:(far fa-bookmark fa-fw): 将此页保存为书签，以备将来参考!
-{{< /admonition >}}
+## 7、shell的作用
 
-## 1 标题
+我之前很迷惑一个问题是，有终端就够了嘛，输入命令，执行并把结果输出，要shell干什么。
 
-从 `h2` 到 `h6` 的标题在每个级别上都加上一个 `＃`:
 
-```markdown
-## h2 标题
-### h3 标题
-#### h4 标题
-##### h5 标题
-###### h6 标题
-```
+所以需要明确下终端负责的工作。终端的工作范围：接收用户的输入，显示传过来的输出。（此外还提供一些优化用户体验的功能，比如支持文字复制粘贴、软件背景颜色的调整等）
 
-输出的 HTML 看起来像这样:
 
-```html
-<h2>h2 标题</h2>
-<h3>h3 标题</h3>
-<h4>h4 标题</h4>
-<h5>h5 标题</h5>
-<h6>h6 标题</h6>
-```
+终端的工作其实是很少的哦，简单来说三点：GUI软件界面、接收输入、显示输出。
 
-{{< admonition note "标题 ID" >}}
-要添加自定义标题 ID, 请在与标题相同的行中将自定义 ID 放在花括号中:
+而shell的核心工作就是**操控计算机内核（如新建文件等等），即访问操作系统中的某个具有一定功能、可以处理具体事务的文件(二进制文件 ---- 此类文件经常被称作工具)、或包含一定内容的文件(文本文件)**
 
-```markdown
-### 一个很棒的标题 {#custom-id}
-```
+我们一般讨论shell都是指命令行shell。
 
-输出的 HTML 看起来像这样:
+shell为什么叫做命令解释器？
 
-```html
-<h3 id="custom-id">一个很棒的标题</h3>
-```
-{{< /admonition >}}
+不管是GUI shell 还是命令行 Shell，其实都是在解释命令，只不过GUI shell隐藏解释命令细节，用户通过点击鼠标的操作操作内核命令。
 
-## 2 注释
+## 8、几种常见的Shell
 
-注释是和 HTML 兼容的：
+>/bin/bash
+>
+>/bin/csh
+>
+>/bin/dash
+>
+>/bin/ksh
+>
+>/bin/sh
+>
+>/bin/tcsh
+>
+>/bin/zsh
 
-```html
-<!--
-这是一段注释
--->
-```
 
-**不能**看到以下的注释:
+bash:
 
-<!--
-这是一段注释
--->
+Bash 是最常见的 shell，Mac 中默认 shell 就是 bash。
+[bash官网这篇文章]描述了唤起 bash shell 时加载的不同文件：login shell 加载 \~/.bash_profile ，而non-login shell 加载 \~/.bashrc 。
 
-## 3 水平线
+zsh:
 
-HTML 中的 `<hr>` 标签是用来在段落元素之间创建一个 "专题间隔" 的.
-使用 Markdown, 你可以用以下方式创建一个 `<hr>` 标签:
+很多人的 mac 中会使用 zsh 而不是 bash，一大半是因为 oh-my-zsh 这个配置集，它兼容 bash，还有自动补全等好用的功能。zsh 的配置文件\~/.zshrc
 
-* `___`: 三个连续的下划线
-* `---`: 三个连续的破折号
-* `***`: 三个连续的星号
-
-呈现的输出效果如下:
-
-___
----
-***
-
-## 4 段落
-
-按照纯文本的方式书写段落, 纯文本在呈现的 HTML 中将用 `<p>`/`</p>` 标签包裹.
-
-如下段落:
-
-```markdown
-Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri,
-animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex,
-soluta officiis concludaturque ei qui, vide sensibus vim ad.
-```
-
-输出的 HTML 看起来像这样:
-
-```html
-<p>Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus. Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.</p>
-```
-
-可以使用一个空白行进行**换行**.
-
-## 5 内联 HTML 元素
-
-如果你需要某个 HTML 标签 (带有一个类), 则可以简单地像这样使用:
-
-```html
-Markdown 格式的段落.
-
-<div class="class">
-    这是 <b>HTML</b>
-</div>
-
-Markdown 格式的段落.
-```
-
-## 6 强调
-
-### 加粗
-
-用于强调带有较粗字体的文本片段.
-
-以下文本片段会被 **渲染为粗体**.
-
-```markdown
-**渲染为粗体**
-__渲染为粗体__
-```
-
-输出的 HTML 看起来像这样:
-
-```html
-<strong>渲染为粗体</strong>
-```
-
-### 斜体
-
-用于强调带有斜体的文本片段.
-
-以下文本片段被 _渲染为斜体_.
-
-```markdown
-*渲染为斜体*
-_渲染为斜体_
-```
-
-输出的 HTML 看起来像这样:
-
-```html
-<em>渲染为斜体</em>
-```
-
-### 删除线
-
-按照 [[GFM]^(GitHub flavored Markdown)](https://github.github.com/gfm/) 你可以使用删除线.
-
-```markdown
-~~这段文本带有删除线.~~
-```
-
-呈现的输出效果如下:
-
-~~这段文本带有删除线.~~
-
-输出的 HTML 看起来像这样:
-
-```html
-<del>这段文本带有删除线.</del>
-```
-
-### 组合
-
-加粗, 斜体, 和删除线可以 组合使用.
-
-```markdown
-***加粗和斜体***
-~~**删除线和加粗**~~
-~~*删除线和斜体*~~
-~~***加粗, 斜体和删除线***~~
-```
-
-呈现的输出效果如下:
-
-***加粗和斜体***
-
-~~**删除线和加粗**~~
-
-~~*删除线和斜体*~~
-
-~~***加粗, 斜体和删除线***~~
-
-输出的 HTML 看起来像这样:
-
-```html
-<em><strong>加粗和斜体</strong></em>
-<del><strong>删除线和加粗</strong></del>
-<del><em>删除线和斜体</em></del>
-<del><em><strong>加粗, 斜体和删除线</strong></em></del>
-```
-
-## 7 引用
-
-用于在文档中引用其他来源的内容块.
-
-在要引用的任何文本之前添加 `>`:
-
-```markdown
-> **Fusion Drive** combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.
-```
-
-呈现的输出效果如下:
-
-> **Fusion Drive** combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.
-
-输出的 HTML 看起来像这样:
-
-```html
-<blockquote>
-  <p>
-    <strong>Fusion Drive</strong> combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.
-  </p>
-</blockquote>
-```
-
-引用也可以嵌套:
-
-```markdown
-> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
-Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
->> Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor
-odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.
-```
-
-呈现的输出效果如下:
-
-> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue.
-Nunc augue augue, aliquam non hendrerit ac, commodo vel nisi.
->> Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor
-odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.
-
-## 8 列表
-
-### 无序列表
-
-一系列项的列表, 其中项的顺序没有明显关系.
-
-你可以使用以下任何符号来表示无序列表中的项:
-
-```markdown
-* 一项内容
-- 一项内容
-+ 一项内容
-```
-
-例如:
-
-```markdown
-* Lorem ipsum dolor sit amet
-* Consectetur adipiscing elit
-* Integer molestie lorem at massa
-* Facilisis in pretium nisl aliquet
-* Nulla volutpat aliquam velit
-  * Phasellus iaculis neque
-  * Purus sodales ultricies
-  * Vestibulum laoreet porttitor sem
-  * Ac tristique libero volutpat at
-* Faucibus porta lacus fringilla vel
-* Aenean sit amet erat nunc
-* Eget porttitor lorem
-```
-
-呈现的输出效果如下:
-
-* Lorem ipsum dolor sit amet
-* Consectetur adipiscing elit
-* Integer molestie lorem at massa
-* Facilisis in pretium nisl aliquet
-* Nulla volutpat aliquam velit
-  * Phasellus iaculis neque
-  * Purus sodales ultricies
-  * Vestibulum laoreet porttitor sem
-  * Ac tristique libero volutpat at
-* Faucibus porta lacus fringilla vel
-* Aenean sit amet erat nunc
-* Eget porttitor lorem
-
-输出的 HTML 看起来像这样:
-
-```html
-<ul>
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Consectetur adipiscing elit</li>
-  <li>Integer molestie lorem at massa</li>
-  <li>Facilisis in pretium nisl aliquet</li>
-  <li>Nulla volutpat aliquam velit
-    <ul>
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
-    </ul>
-  </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
-</ul>
-```
-
-### 有序列表
-
-一系列项的列表, 其中项的顺序确实很重要.
-
-```markdown
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-4. Facilisis in pretium nisl aliquet
-5. Nulla volutpat aliquam velit
-6. Faucibus porta lacus fringilla vel
-7. Aenean sit amet erat nunc
-8. Eget porttitor lorem
-```
-
-呈现的输出效果如下:
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-4. Facilisis in pretium nisl aliquet
-5. Nulla volutpat aliquam velit
-6. Faucibus porta lacus fringilla vel
-7. Aenean sit amet erat nunc
-8. Eget porttitor lorem
-
-输出的 HTML 看起来像这样:
-
-```html
-<ol>
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Consectetur adipiscing elit</li>
-  <li>Integer molestie lorem at massa</li>
-  <li>Facilisis in pretium nisl aliquet</li>
-  <li>Nulla volutpat aliquam velit</li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
-</ol>
-```
-
-{{< admonition tip >}}
-如果你对每一项使用 `1.`, Markdown 将自动为每一项编号. 例如:
-
-```markdown
-1. Lorem ipsum dolor sit amet
-1. Consectetur adipiscing elit
-1. Integer molestie lorem at massa
-1. Facilisis in pretium nisl aliquet
-1. Nulla volutpat aliquam velit
-1. Faucibus porta lacus fringilla vel
-1. Aenean sit amet erat nunc
-1. Eget porttitor lorem
-```
-
-呈现的输出效果如下:
-
-1. Lorem ipsum dolor sit amet
-1. Consectetur adipiscing elit
-1. Integer molestie lorem at massa
-1. Facilisis in pretium nisl aliquet
-1. Nulla volutpat aliquam velit
-1. Faucibus porta lacus fringilla vel
-1. Aenean sit amet erat nunc
-1. Eget porttitor lorem
-{{< /admonition >}}
-
-### 任务列表
-
-任务列表使你可以创建带有复选框的列表.
-要创建任务列表, 请在任务列表项之前添加破折号 (`-`) 和带有空格的方括号 (`[ ]`). 要选择一个复选框，请在方括号之间添加 x (`[x]`).
-
-```markdown
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-```
-
-呈现的输出效果如下:
-
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-
-## 9 代码
-
-### 行内代码
-
-用 <code>`</code> 包装行内代码段.
-
-```markdown
-在这个例子中, `<section></section>` 会被包裹成 **代码**.
-```
-
-呈现的输出效果如下:
-
-在这个例子中, `<section></section>` 会被包裹成 **代码**.
-
-输出的 HTML 看起来像这样:
-
-```html
-<p>
-  在这个例子中, <code>&lt;section&gt;&lt;/section&gt;</code> 会被包裹成 <strong>代码</strong>.
-</p>
-```
-
-### 缩进代码
-
-将几行代码缩进至少四个空格，例如:
-
-```markdown
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-```
-
-呈现的输出效果如下:
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-输出的 HTML 看起来像这样:
-
-```html
-<pre>
-  <code>
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-  </code>
-</pre>
-```
-
-### 围栏代码块
-
-使用 "围栏" <code>```</code> 来生成一段带有语言属性的代码块.
-
-{{< highlight markdown >}}
-```markdown
-Sample text here...
-```
-{{< / highlight >}}
-
-输出的 HTML 看起来像这样:
-
-```html
-<pre language-html>
-  <code>Sample text here...</code>
-</pre>
-```
-
-### 语法高亮
-
-[GFM]^(GitHub Flavored Markdown) 也支持语法高亮.
-
-要激活它，只需在第一个代码 "围栏" 之后直接添加你要使用的语言的文件扩展名,
-<code>```js</code>, 语法高亮显示将自动应用于渲染的 HTML 中.
-
-例如, 在以下 JavaScript 代码中应用语法高亮:
-
-{{< highlight markdown >}}
-```js
-grunt.initConfig({
-  assemble: {
-    options: {
-      assets: 'docs/assets',
-      data: 'src/data/*.{json,yml}',
-      helpers: 'src/custom-helpers.js',
-      partials: ['src/partials/**/*.{hbs,md}']
-    },
-    pages: {
-      options: {
-        layout: 'default.hbs'
-      },
-      files: {
-        './': ['src/templates/pages/index.hbs']
-      }
-    }
-  }
-};
-```
-{{< / highlight >}}
-
-呈现的输出效果如下:
-
-```js
-grunt.initConfig({
-  assemble: {
-    options: {
-      assets: 'docs/assets',
-      data: 'src/data/*.{json,yml}',
-      helpers: 'src/custom-helpers.js',
-      partials: ['src/partials/**/*.{hbs,md}']
-    },
-    pages: {
-      options: {
-        layout: 'default.hbs'
-      },
-      files: {
-        './': ['src/templates/pages/index.hbs']
-      }
-    }
-  }
-};
-```
 
 {{< admonition >}}
-**Hugo** 文档中的 [语法高亮页面](https://gohugo.io/content-management/syntax-highlighting/) 介绍了有关语法高亮的更多信息,
-包括语法高亮的 shortcode.
+
+1. 以上需要重启才能生效的文件，其实可以通过source xxx **暂时生效**。
+
+2. 文件的执行顺序为：当登录Linux时，首先启动/etc/environment和/etc/profile，然后启动当前用户目录下的~/.bash_profile，执行此文件时一般会调用~/.bashrc文件，而执行~/.bashrc时一般会调用/etc/bashrc，最后退出shell时，执行~/.bash_logout。简单来说顺序为：
+
+
 {{< /admonition >}}
 
-## 10 表格
 
-通过在每个单元格之间添加竖线作为分隔线, 并在标题下添加一行破折号 (也由竖线分隔) 来创建表格. 注意, 竖线不需要垂直对齐.
+mac系统使用zsh修改.bash_profile文件失效问题：
 
-```markdown
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-```
+因为终端默认修改为了zsh，使用.bash_profile配置环境变量之后重启终端就会配置失效
 
-呈现的输出效果如下:
+>解决方案：
+>
+>在终端输入vim ~/.zshrc
+>
+>配置环境变量
+>
+>在最后加上这句：
+>
+>source ~/.bash_profile
 
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+## 9、常用的几个命令
 
-输出的 HTML 看起来像这样:
+1. 使用env查看所有环境变量
 
-```html
-<table>
-  <thead>
-    <tr>
-      <th>Option</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>data</td>
-      <td>path to data files to supply the data that will be passed into templates.</td>
-    </tr>
-    <tr>
-      <td>engine</td>
-      <td>engine to be used for processing templates. Handlebars is the default.</td>
-    </tr>
-    <tr>
-      <td>ext</td>
-      <td>extension to be used for dest files.</td>
-    </tr>
-  </tbody>
-</table>
-```
+>env 
 
-{{< admonition note "文本右对齐或居中对齐" >}}
-在任何标题下方的破折号右侧添加冒号将使该列的文本右对齐.
+2. 使用echo命令查看单个环境变量。例如：
 
-在任何标题下方的破折号两边添加冒号将使该列的对齐文本居中.
+>env 
 
-```markdown
-| Option | Description |
-|:------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-```
+3. 查看所有的shell
+>
+>cat /etc/shells
 
-呈现的输出效果如下:
+4. 查看当前窗口使用的shell版本
 
-| Option | Description |
-|:------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-{{< /admonition >}}
+>echo $SHELL
 
-## 11 链接 {#links}
+5. 输出当前使用的shell
 
-### 基本链接
+>echo $0
 
-```markdown
-<https://assemble.io>
-<contact@revolunet.com>
-[Assemble](https://assemble.io)
-```
+6. 我们修改系统默认shell为bash
 
-呈现的输出效果如下 (将鼠标悬停在链接上，没有提示):
-
-<https://assemble.io>
-
-<contact@revolunet.com>
-
-[Assemble](https://assemble.io)
-
-输出的 HTML 看起来像这样:
-
-```html
-<a href="https://assemble.io">https://assemble.io</a>
-<a href="mailto:contact@revolunet.com">contact@revolunet.com</a>
-<a href="https://assemble.io">Assemble</a>
-```
-
-### 添加一个标题
-
-```markdown
-[Upstage](https://github.com/upstage/ "Visit Upstage!")
-```
-
-呈现的输出效果如下 (将鼠标悬停在链接上，会有一行提示):
-
-[Upstage](https://github.com/upstage/ "Visit Upstage!")
-
-输出的 HTML 看起来像这样:
-
-```html
-<a href="https://github.com/upstage/" title="Visit Upstage!">Upstage</a>
-```
-
-### 定位标记
-
-定位标记使你可以跳至同一页面上的指定锚点. 例如, 每个章节:
-
-```markdown
-## Table of Contents
-  * [Chapter 1](#chapter-1)
-  * [Chapter 2](#chapter-2)
-  * [Chapter 3](#chapter-3)
-```
-
-将跳转到这些部分:
-
-```markdown
-## Chapter 1 <a id="chapter-1"></a>
-Content for chapter one.
-
-## Chapter 2 <a id="chapter-2"></a>
-Content for chapter one.
-
-## Chapter 3 <a id="chapter-3"></a>
-Content for chapter one.
-```
-
-{{< admonition >}}
-定位标记的位置几乎是任意的. 因为它们并不引人注目, 所以它们通常被放在同一行了.
-{{< /admonition >}}
-
-## 12 脚注
-
-脚注使你可以添加注释和参考, 而不会使文档正文混乱.
-当你创建脚注时, 会在添加脚注引用的位置出现带有链接的上标编号.
-读者可以单击链接以跳至页面底部的脚注内容.
-
-要创建脚注引用, 请在方括号中添加插入符号和标识符 (`[^1]`).
-标识符可以是数字或单词, 但不能包含空格或制表符.
-标识符仅将脚注引用与脚注本身相关联 - 在脚注输出中, 脚注按顺序编号.
-
-在中括号内使用插入符号和数字以及用冒号和文本来添加脚注内容 (`[^1]：这是一段脚注`).
-你不一定要在文档末尾添加脚注. 可以将它们放在除列表, 引用和表格等元素之外的任何位置.
-
-```markdown
-这是一个数字脚注[^1].
-这是一个带标签的脚注[^label]
-
-[^1]: 这是一个数字脚注
-[^label]: 这是一个带标签的脚注
-```
-
-这是一个数字脚注[^1].
-
-这是一个带标签的脚注[^label]
-
-[^1]: 这是一个数字脚注
-[^label]: 这是一个带标签的脚注
-
-## 13 图片
-
-图片的语法与链接相似, 但包含一个在前面的感叹号.
-
-```markdown
-![Minion](https://octodex.github.com/images/minion.png)
-```
-
-![Minion](https://octodex.github.com/images/minion.png)
-
-或者:
-
-```markdown
-![Alt text](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-```
-
-![Alt text](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-像链接一样, 图片也具有脚注样式的语法:
-
-```markdown
-![Alt text][id]
-```
-
-![Alt text][id]
-
-稍后在文档中提供参考内容, 用来定义 URL 的位置:
-
-```markdown
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-```
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
-{{< admonition tip >}}
-**LoveIt** 主题提供了一个包含更多功能的 [图片的 shortcode](../theme-documentation-extended-shortcodes#image).
-{{< /admonition >}}
-
+>chsh -s /bin/bash
