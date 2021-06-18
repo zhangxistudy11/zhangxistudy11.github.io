@@ -168,7 +168,7 @@ mac系统使用zsh修改.bash_profile文件失效问题：
 
 2. 使用echo命令查看单个环境变量。例如：
 
->env 
+>echo $PATH 
 
 3. 查看所有的shell
 >
