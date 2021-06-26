@@ -11,15 +11,15 @@
   
   ### 我个人理解，可以分为本地回滚和远程回滚：
   ### 一.本地回滚，回滚自己已经提交的代码，但还未推送到远程仓库。
-  ![WeChat7b227a7badf8de1ee1f36dd0fd1f9040.png](https://i.loli.net/2021/06/06/DVg62muXKwMCjIv.png)
+  ![WeChat7b227a7badf8de1ee1f36dd0fd1f9040.png](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZDQzZGU0MTctYzE4ZC00ZGVmLTk0YmMtNTE5OTdiNDA5YjUxIiwicmVzb3VyY0d1aWQiOiJlMDU1MWI3Mi1hMjhlLTRlMjAtOTlmNi05MjVjMTQwZGNkNGQifQ==)
 
    目前我在本地提交了两次，但第二次有大量错误代码，我选择放弃，想直接回到第一次提交的位置，采取以下步骤：
    选中你想回滚到的提交记录，右击->将（所在分支）重置到这次提交->强行合并->确定
    
    
-   ![屏幕快照 2019-03-02 下午6.59.15.png](https://i.loli.net/2021/06/06/U7jYOH2pctzaIgX.png)
-![屏幕快照 2019-03-02 下午6.59.29.png](https://i.loli.net/2021/06/06/9vLZkdUo35qh2Jz.png)
-![1111](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZjFmNDM0NzctNWI4ZS00YzlkLWFjZDMtZmMxZjJkMjJjZTQ4IiwicmVzb3VyY0d1aWQiOiJjYTg4Y2YyYi0zNDg0LTQ3NGYtYmRiYi00MTJkMjVlZmQ5MTEifQ==)
+   ![屏幕快照 2019-03-02 下午6.59.15.png](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZDQzZGU0MTctYzE4ZC00ZGVmLTk0YmMtNTE5OTdiNDA5YjUxIiwicmVzb3VyY0d1aWQiOiI1MmFhODM2Ny1mM2FlLTRjOGYtYThiNC1iNjhhYmYwYjhiOTEifQ==)
+![屏幕快照 2019-03-02 下午6.59.29.png](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZDQzZGU0MTctYzE4ZC00ZGVmLTk0YmMtNTE5OTdiNDA5YjUxIiwicmVzb3VyY0d1aWQiOiJmNjA3YzY5NC1jMGRjLTQ2NGItODc3Ni00MWM3ZGFmNjZhOGQifQ==)
+
 
 
 
@@ -33,12 +33,12 @@ SourceTree默认是不提供这种操作的，因为存在风险。所以，回�
 >
   操作步骤如下：
   1.SourceTree开启允许强制推送权限
-  ![WeChat49ce02c556383746dfcc3eab7c6e4b47.png](https://i.loli.net/2021/06/06/Do1FNxc2H5ZUkib.png)
+  ![WeChat49ce02c556383746dfcc3eab7c6e4b47.png](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZDQzZGU0MTctYzE4ZC00ZGVmLTk0YmMtNTE5OTdiNDA5YjUxIiwicmVzb3VyY0d1aWQiOiI5MThkN2ZiMy02Njc0LTQwYzMtYmZlMy1lOGM2MTkzNWRlMmQifQ==)
   2.和本地回滚一样，先回滚到想要的位置
-![屏幕快照 2019-03-02 下午6.59.15.png](https://i.loli.net/2021/06/06/U7jYOH2pctzaIgX.png)
+![屏幕快照 2019-03-02 下午6.59.15.png](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZDQzZGU0MTctYzE4ZC00ZGVmLTk0YmMtNTE5OTdiNDA5YjUxIiwicmVzb3VyY0d1aWQiOiI1MmFhODM2Ny1mM2FlLTRjOGYtYThiNC1iNjhhYmYwYjhiOTEifQ==)
 
 3.强制推送代码，切记这个时候不要拉取代码
-![屏幕快照 2019-03-02 下午7.51.34.png](https://i.loli.net/2021/06/06/xEpKXcMbykY5mtQ.png)
+![屏幕快照 2019-03-02 下午7.51.34.png](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZDQzZGU0MTctYzE4ZC00ZGVmLTk0YmMtNTE5OTdiNDA5YjUxIiwicmVzb3VyY0d1aWQiOiI4NmVhYzZkNS03Y2U0LTQ4YmMtYmQ0Mi1mYzA2MWZlNjc0NjgifQ==)
 5.完成操作，本地和远程的代码都是你想要回滚的地方。
 
 
