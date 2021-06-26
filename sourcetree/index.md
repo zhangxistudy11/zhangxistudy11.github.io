@@ -19,6 +19,9 @@
    
    ![屏幕快照 2019-03-02 下午6.59.15.png](https://i.loli.net/2021/06/06/U7jYOH2pctzaIgX.png)
 ![屏幕快照 2019-03-02 下午6.59.29.png](https://i.loli.net/2021/06/06/9vLZkdUo35qh2Jz.png)
+![1111](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiZjFmNDM0NzctNWI4ZS00YzlkLWFjZDMtZmMxZjJkMjJjZTQ4IiwicmVzb3VyY0d1aWQiOiJjYTg4Y2YyYi0zNDg0LTQ3NGYtYmRiYi00MTJkMjVlZmQ5MTEifQ==)
+
+
 
 ### 二.远程回滚，即回滚远程代码仓库的代码。
 SourceTree默认是不提供这种操作的，因为存在风险。所以，回滚远程代码，一定要注意：
