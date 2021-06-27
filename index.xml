@@ -6,12 +6,12 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Jun 2021 19:26:40 &#43;0800</lastBuildDate>
             <atom:link href="https://zhangxistudy11.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>iOS闪退定位的N种方法</title>
+    <title>iOS如何将闪退日志符号化</title>
     <link>https://zhangxistudy11.github.io/crashlocation/</link>
     <pubDate>Sat, 26 Jun 2021 19:26:40 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://zhangxistudy11.github.io/crashlocation/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[这篇文章会介绍定位闪退的几种方法，由易到难进行介绍。当你手里关于闪退的信息越多，解决就越简单，反之，就会更难。 首先解释下符号化的概念：符号化]]></description>
 </item><item>
     <title>谈谈对环境变量的认识</title>
     <link>https://zhangxistudy11.github.io/environment/</link>
