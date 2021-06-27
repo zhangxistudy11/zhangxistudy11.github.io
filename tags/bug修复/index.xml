@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>bug修复 - 标签 - 代码人生</title>
+        <title>bug修复 - 标签 - 码工人生</title>
         <link>https://zhangxistudy11.github.io/tags/bug%E4%BF%AE%E5%A4%8D/</link>
-        <description>bug修复 - 标签 - 代码人生</description>
+        <description>bug修复 - 标签 - 码工人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Jun 2021 19:26:40 &#43;0800</lastBuildDate><atom:link href="https://zhangxistudy11.github.io/tags/bug%E4%BF%AE%E5%A4%8D/" rel="self" type="application/rss+xml" /><item>
     <title>iOS闪退定位的N种方法</title>
     <link>https://zhangxistudy11.github.io/crashlocation/</link>

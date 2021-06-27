@@ -1,6 +1,6 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>代码人生</title>
+        <title>码工人生</title>
         <link>https://zhangxistudy11.github.io/</link>
         <description>爱生活，爱编程</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Jun 2021 19:26:40 &#43;0800</lastBuildDate>

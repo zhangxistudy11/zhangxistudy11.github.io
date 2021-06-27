@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>协同开发 - 分类 - 代码人生</title>
+        <title>协同开发 - 分类 - 码工人生</title>
         <link>https://zhangxistudy11.github.io/categories/%E5%8D%8F%E5%90%8C%E5%BC%80%E5%8F%91/</link>
-        <description>协同开发 - 分类 - 代码人生</description>
+        <description>协同开发 - 分类 - 码工人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 02 Mar 2019 19:55:59 &#43;0800</lastBuildDate><atom:link href="https://zhangxistudy11.github.io/categories/%E5%8D%8F%E5%90%8C%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml" /><item>
     <title>使用SourceTree回滚</title>
     <link>https://zhangxistudy11.github.io/sourcetree/</link>

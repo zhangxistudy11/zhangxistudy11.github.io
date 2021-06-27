@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>配置 - 标签 - 代码人生</title>
+        <title>配置 - 标签 - 码工人生</title>
         <link>https://zhangxistudy11.github.io/tags/%E9%85%8D%E7%BD%AE/</link>
-        <description>配置 - 标签 - 代码人生</description>
+        <description>配置 - 标签 - 码工人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 13 Jun 2021 15:38:40 &#43;0800</lastBuildDate><atom:link href="https://zhangxistudy11.github.io/tags/%E9%85%8D%E7%BD%AE/" rel="self" type="application/rss+xml" /><item>
     <title>谈谈对环境变量的认识</title>
     <link>https://zhangxistudy11.github.io/environment/</link>
